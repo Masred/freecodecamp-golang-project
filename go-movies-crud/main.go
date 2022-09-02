@@ -19,8 +19,8 @@ type Movie struct {
 }
 
 type Director struct {
-	firstName string `json:"firstname"`
-	lastName  string `json:"lastname"`
+	Firstname string `json:"firstname"`
+	Lastname  string `json:"lastname"`
 }
 
 var movies []Movie
@@ -87,8 +87,8 @@ func main() {
 		Isbn:  "42452",
 		Title: "Tanah Jawa",
 		Director: &Director{
-			firstName: "Jett",
-			lastName:  "Brian",
+			Firstname: "Jett",
+			Lastname:  "Brian",
 		},
 	})
 	movies = append(movies, Movie{
@@ -96,8 +96,8 @@ func main() {
 		Isbn:  "11352",
 		Title: "Tanah Air Beta",
 		Director: &Director{
-			firstName: "Santi",
-			lastName:  "Mulyani",
+			Firstname: "Santi",
+			Lastname:  "Mulyani",
 		},
 	})
 
@@ -105,7 +105,7 @@ func main() {
 	r.HandleFunc("/movies/{id}", getMovie).Methods("GET")
 	r.HandleFunc("/movies", createMovie).Methods("POST")
 	r.HandleFunc("/movies/{id}", updateMovie).Methods("PUT")
-	r.HandleFunc("/movie/{id}", deleteMovie).Methods("DELETE")
+	r.HandleFunc("/movies/{id}", deleteMovie).Methods("DELETE")
 
 	fmt.Printf("Starting server at localhost:8000\n")
 	log.Fatal(http.ListenAndServe("localhost:8000", r))
